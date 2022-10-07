@@ -942,7 +942,7 @@ def denorm_boxes(boxes, shape):
 def resize(
     image,
     output_shape,
-    order=1,
+    order=0,
     mode="constant",
     cval=0,
     clip=True,
