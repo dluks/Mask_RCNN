@@ -6,7 +6,11 @@ Copyright (c) 2017 Matterport, Inc.
 Licensed under the MIT License (see LICENSE for details)
 Written by Waleed Abdulla
 """
+
+import sys
+import os
 import logging
+import math
 import random
 import numpy as np
 import tensorflow as tf
@@ -961,7 +965,7 @@ def resize(
         return skimage.transform.resize(
             imgf,
             output_shape,
-            order=0,
+            order=order,
             mode=mode,
             cval=cval,
             clip=clip,
@@ -973,7 +977,7 @@ def resize(
         return skimage.transform.resize(
             imgf,
             output_shape,
-            order=0,
+            order=order,
             mode=mode,
             cval=cval,
             clip=clip,
