@@ -2676,7 +2676,7 @@ class MaskRCNN(object):
         # Train
         log("\nStarting at epoch {}. LR={}\n".format(self.epoch, learning_rate))
         log("Checkpoint Path: {}".format(self.checkpoint_path))
-        self.set_trainable(layers)
+        self.set_trainable(layers, verbose=2)
         self.compile(learning_rate, self.config.LEARNING_MOMENTUM)
 
         # Work-around for Windows: Keras fails on Windows when using
