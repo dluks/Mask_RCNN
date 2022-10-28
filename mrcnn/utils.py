@@ -958,12 +958,13 @@ def resize(
     version. And it provides a central place to control resizing defaults.
     """
     return_type = image.dtype
-    imgf = img_as_float(image)
+    if image.dtype == bool:
+        image = img_as_float(image)
     if LooseVersion(skimage.__version__) >= LooseVersion("0.14"):
         # New in 0.14: anti_aliasing. Default it to False for backward
         # compatibility with skimage 0.13.
         return skimage.transform.resize(
-            imgf,
+            image,
             output_shape,
             order=order,
             mode=mode,
@@ -975,7 +976,7 @@ def resize(
         ).astype(return_type)
     else:
         return skimage.transform.resize(
-            imgf,
+            image,
             output_shape,
             order=order,
             mode=mode,
